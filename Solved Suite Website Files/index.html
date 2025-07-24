@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solved Suite - Your Business Growth Partner</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F8F8; /* Light Grey background */
+        }
+        /* Custom colors for Tailwind */
+        .bg-navy { background-color: #001F3F; } /* Dark Navy */
+        .text-navy { color: #001F3F; }
+        .bg-teal { background-color: #008080; } /* Teal */
+        .text-teal { color: #008080; }
+        .bg-gold { background-color: #FFD700; } /* Yellow Gold */
+        .text-gold { color: #FFD700; }
+        .border-gold { border-color: #FFD700; }
+
+        .btn-primary {
+            @apply px-8 py-3 rounded-full font-semibold transition duration-300 ease-in-out transform hover:scale-105;
+        }
+        .btn-gold {
+            @apply bg-gold text-navy shadow-lg hover:bg-yellow-400;
+        }
+        .btn-outline-gold {
+            @apply border-2 border-gold text-gold hover:bg-gold hover:text-navy;
+        }
+        .tool-card {
+            @apply bg-white p-6 rounded-xl shadow-md transition duration-300 ease-in-out hover:shadow-lg;
+        }
+        /* Hide pages by default, show with JS */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-navy text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gold" onclick="showPage('landing')">Solved Suite</a>
+            <div class="space-x-4">
+                <button class="text-white hover:text-gold transition duration-300" onclick="showPage('landing')">Home</button>
+                <button class="text-white hover:text-gold transition duration-300" onclick="showPage('tools')">Tools</button>
+                <a href="#" class="btn-primary btn-gold" onclick="alert('Linking to MailerLite for notifications! (Placeholder)'); return false;">Try Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page Section -->
+    <section id="landing-page" class="page-section active bg-gray-100 min-h-screen flex items-center justify-center py-16">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-6xl font-extrabold text-navy leading-tight mb-6">
+                Unlock Your Business Potential with <span class="text-teal">Solved Suite</span>
+            </h1>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-10">
+                The all-in-one SaaS platform designed for startups, entrepreneurs, and small businesses. Access 50+ high-value tools that flow in a logical sequence, yet work perfectly on their own.
+            </p>
+            <button class="btn-primary btn-gold text-lg" onclick="alert('Linking to MailerLite for notifications! (Placeholder)'); return false;">
+                Try Free Today
+            </button>
+            <p class="mt-4 text-gray-600 text-sm">No credit card required. Get notified when we launch!</p>
+
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
+                    <svg class="w-16 h-16 text-teal mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-2xl font-semibold text-navy mb-2">Comprehensive Tools</h3>
+                    <p class="text-gray-600 text-center">Access a vast array of tools covering every aspect of your business operations.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
+                    <svg class="w-16 h-16 text-teal mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <h3 class="text-2xl font-semibold text-navy mb-2">Seamless Workflow</h3>
+                    <p class="text-gray-600 text-center">Tools designed to integrate and streamline your processes for maximum efficiency.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
+                    <svg class="w-16 h-16 text-teal mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.592 1L21 12l-4.408 3c-.512.598-1.482 1-2.592 1-3.313 0-6-2.687-6-6s2.687-6 6-6z"></path></svg>
+                    <h3 class="text-2xl font-semibold text-navy mb-2">Value-Driven Growth</h3>
+                    <p class="text-gray-600 text-center">Empower your business with insights and capabilities to achieve sustainable growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools List Page Section -->
+    <section id="tools-page" class="page-section bg-gray-100 min-h-screen py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-extrabold text-navy text-center mb-12">
+                Our Comprehensive Tool Suite
+            </h2>
+            <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-10">
+                Solved Suite offers a powerful collection of tools designed to streamline your operations, boost productivity, and drive growth. Here's a glimpse of what's inside (sample list).
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sample Tool Card 1 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">CRM & Lead Management</h3>
+                    <p class="text-gray-600">Track leads, manage customer relationships, and automate sales processes.</p>
+                </div>
+                <!-- Sample Tool Card 2 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Project Planner</h3>
+                    <p class="text-gray-600">Organize tasks, set deadlines, and collaborate effectively with your team.</p>
+                </div>
+                <!-- Sample Tool Card 3 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Invoice Generator</h3>
+                    <p class="text-gray-600">Create professional invoices, track payments, and manage billing effortlessly.</p>
+                </div>
+                <!-- Sample Tool Card 4 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Social Media Scheduler</h3>
+                    <p class="text-gray-600">Plan, schedule, and publish your social media content across platforms.</p>
+                </div>
+                <!-- Sample Tool Card 5 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Email Marketing Automator</h3>
+                    <p class="text-gray-600">Design campaigns, segment audiences, and automate email sequences.</p>
+                </div>
+                <!-- Sample Tool Card 6 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Website Builder (Drag & Drop)</h3>
+                    <p class="text-gray-600">Build stunning, responsive websites with no coding required.</p>
+                </div>
+                <!-- Sample Tool Card 7 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Analytics Dashboard</h3>
+                    <p class="text-gray-600">Gain insights into your business performance with comprehensive data visualization.</p>
+                </div>
+                <!-- Sample Tool Card 8 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Content Creator (AI-powered)</h3>
+                    <p class="text-gray-600">Generate engaging content for blogs, social media, and marketing materials.</p>
+                </div>
+                <!-- Sample Tool Card 9 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">HR & Payroll Manager</h3>
+                    <p class="text-gray-600">Streamline employee management, payroll processing, and HR tasks.</p>
+                </div>
+                <!-- Sample Tool Card 10 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Financial Forecasting</h3>
+                    <p class="text-gray-600">Predict future financial performance and make informed business decisions.</p>
+                </div>
+                <!-- Sample Tool Card 11 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Customer Support Ticketing</h3>
+                    <p class="text-gray-600">Manage customer inquiries efficiently and provide excellent service.</p>
+                </div>
+                <!-- Sample Tool Card 12 -->
+                <div class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">SEO Optimizer</h3>
+                    <p class="text-gray-600">Improve your website's search engine ranking and drive organic traffic.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="btn-primary btn-outline-gold text-lg" onclick="showPage('landing')">
+                    Back to Home
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Solved Suite. All rights reserved.</p>
+            <p class="mt-2 text-sm text-gray-400">Designed for startups, entrepreneurs, and small businesses.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to show/hide pages
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId + '-page').classList.add('active');
+        }
+
+        // Initialize to show landing page
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('landing');
+        });
+    </script>
+</body>
+</html>

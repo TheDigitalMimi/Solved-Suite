@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solved Suite - Idea Generator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F8F8; /* Light Grey background */
+        }
+        /* Custom colors for Tailwind */
+        .bg-navy { background-color: #001F3F; } /* Dark Navy */
+        .text-navy { color: #001F3F; }
+        .bg-teal { background-color: #008080; } /* Teal */
+        .text-teal { color: #008080; }
+        .bg-gold { background-color: #FFD700; } /* Yellow Gold */
+        .text-gold { color: #FFD700; }
+        .border-gold { border-color: #FFD700; }
+
+        .btn-primary {
+            @apply px-8 py-3 rounded-full font-semibold transition duration-300 ease-in-out transform hover:scale-105;
+        }
+        .btn-gold {
+            @apply bg-gold text-navy shadow-lg hover:bg-yellow-400;
+        }
+        .btn-outline-gold {
+            @apply border-2 border-gold text-gold hover:bg-gold hover:text-navy;
+        }
+        .input-field {
+            @apply w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal;
+        }
+
+        /* Custom Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 450px;
+            text-align: center;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+        .modal-content h3 {
+            @apply text-2xl font-bold text-navy mb-4;
+        }
+        .modal-content p {
+            @apply text-gray-700 mb-6;
+        }
+        .modal-buttons {
+            @apply flex justify-center space-x-4;
+        }
+        .modal-button {
+            @apply px-6 py-2 rounded-full font-semibold transition duration-300 ease-in-out;
+        }
+        .modal-button.confirm {
+            @apply bg-teal text-white hover:bg-emerald-600;
+        }
+        .modal-button.cancel {
+            @apply border-2 border-gray-300 text-gray-700 hover:bg-gray-100;
+        }
+    </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-navy text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gold">Solved Suite</a>
+            <div class="space-x-4">
+                <!-- In a real app, these would link to the respective tool pages or sections -->
+                <button class="text-white hover:text-gold transition duration-300" onclick="showMessage('Info', 'Navigating to Home (Placeholder)');">Home</button>
+                <button class="text-white hover:text-gold transition duration-300" onclick="showMessage('Info', 'Navigating to Tools List (Placeholder)');">Tools</button>
+                <a href="#" class="btn-primary btn-gold" onclick="showMessage('Info', 'Linking to MailerLite for notifications! (Placeholder)'); return false;">Try Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Section - Idea Generator -->
+    <main class="flex-grow bg-gray-100 py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-5xl font-extrabold text-navy text-center mb-8">
+                Idea Generator
+            </h2>
+            <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-10">
+                Turn your passions, problems, or unique insights into viable business concepts.
+            </p>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="mb-6">
+                    <label for="ideaPrompt" class="block text-lg font-semibold text-navy mb-2">Tell us about your interests, hobbies, dislikes, or things you find difficult to perform:</label>
+                    <textarea id="ideaPrompt" rows="6" class="input-field" placeholder="E.g., I love gardening but hate weeding. I'm interested in sustainable living."></textarea>
+                </div>
+
+                <div class="text-center mb-8">
+                    <button id="generateBtn" class="btn-primary btn-teal text-lg bg-teal text-white hover:bg-emerald-600">
+                        Generate Ideas
+                    </button>
+                </div>
+
+                <div id="loadingIndicator" class="text-center text-teal font-semibold hidden mb-4">
+                    Generating ideas... Please wait.
+                </div>
+
+                <div id="ideaOutput" class="bg-gray-50 p-6 rounded-lg border border-gray-200 min-h-[200px] overflow-auto text-gray-700 leading-relaxed whitespace-pre-wrap">
+                    <!-- Generated ideas will appear here -->
+                    Your generated business ideas will appear here.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom Message Box Modal -->
+    <div id="messageModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="messageModalTitle"></h3>
+            <p id="messageModalBody"></p>
+            <div class="modal-buttons">
+                <button class="modal-button confirm" onclick="closeMessage()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Confirmation Modal -->
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="confirmationModalTitle"></h3>
+            <p id="confirmationModalBody"></p>
+            <div class="modal-buttons">
+                <button class="modal-button confirm" id="confirmYesBtn">Yes</button>
+                <button class="modal-button cancel" id="confirmNoBtn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-8 mt-auto">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Solved Suite. All rights reserved.</p>
+            <p class="mt-2 text-sm text-gray-400">Designed for startups, entrepreneurs, and small businesses.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Custom Modal/Message Box Functions ---
+        let resolveConfirmation;
+
+        function showMessage(title, message) {
+            document.getElementById('messageModalTitle').textContent = title;
+            document.getElementById('messageModalBody').textContent = message;
+            document.getElementById('messageModal').classList.add('show');
+        }
+
+        function closeMessage() {
+            document.getElementById('messageModal').classList.remove('show');
+        }
+
+        function showConfirmation(title, message) {
+            return new Promise((resolve) => {
+                document.getElementById('confirmationModalTitle').textContent = title;
+                document.getElementById('confirmationModalBody').textContent = message;
+                document.getElementById('confirmationModal').classList.add('show');
+                resolveConfirmation = resolve;
+            });
+        }
+
+        function closeConfirmation(result) {
+            document.getElementById('confirmationModal').classList.remove('show');
+            if (resolveConfirmation) {
+                resolveConfirmation(result);
+                resolveConfirmation = null; // Clear the resolver
+            }
+        }
+
+        document.getElementById('confirmYesBtn').addEventListener('click', () => closeConfirmation(true));
+        document.getElementById('confirmNoBtn').addEventListener('click', () => closeConfirmation(false));
+
+        // --- Idea Generator Logic ---
+        document.getElementById('generateBtn').addEventListener('click', async () => {
+            const promptInput = document.getElementById('ideaPrompt').value;
+            const outputDiv = document.getElementById('ideaOutput');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            if (!promptInput.trim()) {
+                showMessage('Input Required', 'Please tell us about your interests, hobbies, dislikes, or challenges to generate ideas.');
+                return;
+            }
+
+            outputDiv.textContent = ''; // Clear previous content
+            loadingIndicator.classList.remove('hidden'); // Show loading indicator
+
+            try {
+                // Crafting the prompt to get business ideas based on user input
+                const userPrompt = `Generate 5 innovative business ideas based on the following: "${promptInput}". For each idea, briefly describe the concept and who it would serve.`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: userPrompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "AIzaSyD6b0CFoJA_xRH3Yg8x0gSs8f0b--TOTFM"; // Canvas environment will inject the API key here
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputDiv.textContent = text;
+                } else {
+                    showMessage('Generation Failed', 'Failed to generate ideas. Please try again.');
+                    console.error("Unexpected API response structure:", result);
+                }
+            } catch (error) {
+                showMessage('Error', 'An error occurred while generating ideas. Please check your network connection or try again later.');
+                console.error("Error calling Gemini API:", error);
+            } finally {
+                loadingIndicator.classList.add('hidden'); // Hide loading indicator
+            }
+        });
+    </script>
+</body>
+</html>
