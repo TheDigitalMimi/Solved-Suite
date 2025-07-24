@@ -52,7 +52,7 @@
             <div class="space-x-4">
                 <button class="text-white hover:text-gold transition duration-300" onclick="showPage('landing')">Home</button>
                 <button class="text-white hover:text-gold transition duration-300" onclick="showPage('tools')">Tools</button>
-                <a href="#" class="btn-primary btn-gold" onclick="alert('Linking to MailerLite for notifications! (Placeholder)'); return false;">Try Free</a>
+                <a href="#" class="btn-primary btn-gold" onclick="showPage('tools'); return false;">Try Free</a>
             </div>
         </div>
     </nav>
@@ -66,7 +66,7 @@
             <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-10">
                 The all-in-one SaaS platform designed for startups, entrepreneurs, and small businesses. Access 50+ high-value tools that flow in a logical sequence, yet work perfectly on their own.
             </p>
-            <button class="btn-primary btn-gold text-lg" onclick="alert('Linking to MailerLite for notifications! (Placeholder)'); return false;">
+            <button class="btn-primary btn-gold text-lg" onclick="showPage('tools'); return false;">
                 Try Free Today
             </button>
             <p class="mt-4 text-gray-600 text-sm">No credit card required. Get notified when we launch!</p>
@@ -102,65 +102,90 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Sample Tool Card 1 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">CRM & Lead Management</h3>
-                    <p class="text-gray-600">Track leads, manage customer relationships, and automate sales processes.</p>
-                </div>
-                <!-- Sample Tool Card 2 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Project Planner</h3>
-                    <p class="text-gray-600">Organize tasks, set deadlines, and collaborate effectively with your team.</p>
-                </div>
-                <!-- Sample Tool Card 3 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Invoice Generator</h3>
-                    <p class="text-gray-600">Create professional invoices, track payments, and manage billing effortlessly.</p>
-                </div>
-                <!-- Sample Tool Card 4 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Social Media Scheduler</h3>
-                    <p class="text-gray-600">Plan, schedule, and publish your social media content across platforms.</p>
-                </div>
-                <!-- Sample Tool Card 5 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Email Marketing Automator</h3>
-                    <p class="text-gray-600">Design campaigns, segment audiences, and automate email sequences.</p>
-                </div>
-                <!-- Sample Tool Card 6 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Website Builder (Drag & Drop)</h3>
-                    <p class="text-gray-600">Build stunning, responsive websites with no coding required.</p>
-                </div>
-                <!-- Sample Tool Card 7 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Analytics Dashboard</h3>
-                    <p class="text-gray-600">Gain insights into your business performance with comprehensive data visualization.</p>
-                </div>
-                <!-- Sample Tool Card 8 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Content Creator (AI-powered)</h3>
+                <!-- Tool Card: Writing Assistant -->
+                <a href="writing-assistant.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Writing Assistant</h3>
                     <p class="text-gray-600">Generate engaging content for blogs, social media, and marketing materials.</p>
-                </div>
-                <!-- Sample Tool Card 9 -->
+                </a>
+                <!-- Tool Card: Idea Generator -->
+                <a href="idea-generator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Idea Generator</h3>
+                    <p class="text-gray-600">Turn your passions, problems, or unique insights into viable business concepts.</p>
+                </a>
+                <!-- Tool Card: Name Generator -->
+                <a href="name-generator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Name Generator</h3>
+                    <p class="text-gray-600">Find the perfect name for your business, product, or project.</p>
+                </a>
+                <!-- Tool Card: Logo Generator -->
+                <a href="logo-generator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Logo Generator</h3>
+                    <p class="text-gray-600">Craft unique visual identities for your brand.</p>
+                </a>
+                <!-- Tool Card: Color Palette Generator -->
+                <a href="color-palette-generator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Color Palette Generator</h3>
+                    <p class="text-gray-600">Discover harmonious color schemes for your brand, website, or marketing materials.</p>
+                </a>
+                <!-- Tool Card: Tagline Generator -->
+                <a href="tagline-generator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Tagline Generator</h3>
+                    <p class="text-gray-600">Create impactful taglines that capture your brand's essence.</p>
+                </a>
+                <!-- Tool Card: ROI Calculator -->
+                <a href="roi-calculator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">ROI Calculator</h3>
+                    <p class="text-gray-600">Evaluate the profitability of your investments and projects.</p>
+                </a>
+                <!-- Tool Card: Break-Even Calculator -->
+                <a href="break-even-calculator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Break-Even Calculator</h3>
+                    <p class="text-gray-600">Determine the sales volume needed to cover all your costs and start making a profit.</p>
+                </a>
+                <!-- Tool Card: Niche Selector -->
+                <a href="niche-selector.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Niche Selector</h3>
+                    <p class="text-gray-600">Identify profitable and underserved niches for your business or product.</p>
+                </a>
+                <!-- Tool Card: Target Audience Generator -->
+                <a href="target-audience-generator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Target Audience Generator</h3>
+                    <p class="text-gray-600">Define your ideal customer with detailed profiles to inform your marketing and product strategy.</p>
+                </a>
+                <!-- Tool Card: Ad Copy Generator -->
+                <a href="ad-copy-generator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Ad Copy Generator</h3>
+                    <p class="text-gray-600">Craft persuasive ad copy that converts for various platforms.</p>
+                </a>
+                <!-- Tool Card: Content Creation Calendar -->
+                <a href="content-calendar.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Content Creation Calendar</h3>
+                    <p class="text-gray-600">Plan your content strategy with a 30-day calendar tailored to your chosen platforms.</p>
+                </a>
+                <!-- Tool Card: Commercial Creator -->
+                <a href="commercial-creator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Commercial Creator</h3>
+                    <p class="text-gray-600">Generate creative concepts and scripts for your next commercial.</p>
+                </a>
+                <!-- Tool Card: Pinterest Pin Creator -->
+                <a href="pinterest-pin-creator.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Pinterest Pin Creator</h3>
+                    <p class="text-gray-600">Generate engaging ideas and text for your Pinterest pins to drive traffic and inspiration.</p>
+                </a>
+                <!-- Tool Card: Branding Help -->
+                <a href="branding-help.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Branding Help</h3>
+                    <p class="text-gray-600">Define your brand's core identity: mission, vision, values, and personality.</p>
+                </a>
+                <!-- Tool Card: Keyword Research Tool -->
+                <a href="keyword-research-tool.html" class="tool-card">
+                    <h3 class="text-xl font-semibold text-teal mb-2">Keyword Research Tool</h3>
+                    <p class="text-gray-600">Uncover high-value keywords to boost your SEO and content strategy.</p>
+                </a>
+                <!-- Placeholder for other tools you might add later -->
                 <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">HR & Payroll Manager</h3>
-                    <p class="text-gray-600">Streamline employee management, payroll processing, and HR tasks.</p>
-                </div>
-                <!-- Sample Tool Card 10 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Financial Forecasting</h3>
-                    <p class="text-gray-600">Predict future financial performance and make informed business decisions.</p>
-                </div>
-                <!-- Sample Tool Card 11 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">Customer Support Ticketing</h3>
-                    <p class="text-gray-600">Manage customer inquiries efficiently and provide excellent service.</p>
-                </div>
-                <!-- Sample Tool Card 12 -->
-                <div class="tool-card">
-                    <h3 class="text-xl font-semibold text-teal mb-2">SEO Optimizer</h3>
-                    <p class="text-gray-600">Improve your website's search engine ranking and drive organic traffic.</p>
+                    <h3 class="text-xl font-semibold text-teal mb-2">More Tools Coming Soon!</h3>
+                    <p class="text-gray-600">We're constantly expanding Solved Suite with even more high-value business tools.</p>
                 </div>
             </div>
 
